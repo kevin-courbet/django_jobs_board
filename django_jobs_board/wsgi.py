@@ -1,5 +1,5 @@
 """
-WSGI config for django_jobs_board project.
+WSGI config for to_do_app project.
 
 This module contains the WSGI application used by Django's development server
 and any production WSGI deployments. It should expose a module-level variable
