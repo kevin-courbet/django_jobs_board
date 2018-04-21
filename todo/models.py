@@ -16,7 +16,7 @@ class Todo(models.Model):
     time_estimate = models.DurationField(help_text="Please specify how long the task is estimated to take.", default=0)
     additional_information = models.TextField(max_length=1000, help_text="Please provide additional information that can help understanding the task's breadth and stakes", blank=True)
     attachments = models.FileField(upload_to='uploads/', blank=True)
-    created_at = models.DateTimeField(default=datetime.now(), blank=True, editable=False)
+    created_at = models.DateTimeField(default=datetime.now(), blank=True)
 
     def __str__(self):
         return self.title

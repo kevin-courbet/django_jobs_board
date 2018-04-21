@@ -8,7 +8,8 @@ from django.http import HttpRequest
 from datetime import datetime
 from .models import Todo
 from operator import itemgetter
-from .forms import SignUpForm
+from .forms import SignUpForm, TodoForm
+from django.contrib.auth.models import User
 
 
 def home(request):
@@ -60,19 +61,29 @@ def details(request, id):
     todo = Todo.objects.get(id=id)
     return render(request, 'todo/details.html',
                   {
-                      'todo': todo
+                      'todo': todo,
+                      'year': datetime.now().year,
                   })
 
 
 def add(request):
     assert isinstance(request, HttpRequest)
     if(request.method == 'POST'):
-        owner, endorsement, task_description, motivation, time_estimate, additional_information, attachments, created_at = itemgetter('owner', 'endorsement', 'task_description', 'motivation', 'time_estimate', 'additional_information', 'attachments', 'created_at')(request.POST)
-        todo = Todo(owner=owner, endorsement=endorsement, task_description=task_description, motivation=motivation, time_estimate=time_estimate, additional_information=additional_information, attachments=attachments, created_at=created_at)
-        todo.save()
-        return redirect('/')
+        form = TodoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            #owner_id, endorsement, task_description, motivation, time_estimate, additional_information, attachments, created_at = itemgetter('owner', 'endorsement', 'task_description', 'motivation', 'time_estimate', 'additional_information', 'attachments', 'created_at')(request.POST)
+            #owner = User.objects.create(id=owner_id)
+            #todo = Todo(owner=owner, endorsement=endorsement, task_description=task_description, motivation=motivation, time_estimate=time_estimate, additional_information=additional_information, attachments=attachments, created_at=created_at)
+            #todo.save()
+            return redirect('/')
     else:
-        return render(request, 'todo/add.html')
+        form = TodoForm()
+        return render(request, 'todo/add.html', {
+        'form': form,
+        'title': 'Add',
+        'year': datetime.now().year,
+        })
 
 
 def signup(request):
@@ -87,4 +98,8 @@ def signup(request):
             return redirect('home')
     else:
         form = SignUpForm()
-    return render(request, 'todo/signup.html', {'form': form})
+        return render(request, 'todo/signup.html', {
+            'form': form,
+            'title': 'Signup',
+            'year': datetime.now().year,
+            })

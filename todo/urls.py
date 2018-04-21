@@ -1,5 +1,4 @@
 from django.conf.urls import url
-
 from . import views
 
 urlpatterns = [
@@ -8,6 +7,6 @@ urlpatterns = [
     url(r'^contact$', views.contact, name='contact'),
     url(r'^about$', views.about, name='about'),
     url(r'^details/(?P<id>\w{0,50})/$', views.details, name='details'),
-    url(r'^add$', views.add, name='add'),
+    url(r'^todo/add$', views.add, name='add'),
     url(r'^signup/$', views.signup, name='signup'),
 ]

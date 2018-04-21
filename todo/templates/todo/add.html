@@ -1,16 +1,9 @@
 {% extends "todo/layout.html" %}
 {% block content %}
-
-<form action="{% url 'add' %}" method="post">
+<br />
+ <form method="post">
     {% csrf_token %}
-    <br/>
-    <label for="title">Title</label><br/>
-    <input type="text" name="title" id="title"/>
-    <br/>
-    <label for="text">Text</label>
-    <br/>
-    <textarea name="text" id="text"></textarea>
-    <br/><br/>
-    <input type="submit" value="Submit"/>
-</form>
+    {{ form.as_p }}
+    <button type="submit">Submit</button>
+ </form>
 {% endblock content %}

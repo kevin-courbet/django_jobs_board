@@ -32,6 +32,9 @@
                 <p class="validation-summary-errors">Please enter a correct user name and password.</p>
                 {% endif %}
             </form>
+            <div class="col-xs-12 text-center">
+                <p>Don't have an account? <a href="{% url 'signup' %}">Sign Up</a></p>
+            </div>
         </section>
     </div>
     <div class="col-md-4">
@@ -44,7 +47,7 @@
 
 {% block scripts %}
 
-    {% load staticfiles %}
+{% load staticfiles %}
 <script src="{% static 'app/scripts/jquery.validate.min.js' %}"></script>
 
 {% endblock %}

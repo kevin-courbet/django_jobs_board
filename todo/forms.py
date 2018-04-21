@@ -3,8 +3,10 @@ Definition of forms.
 """
 
 from django import forms
+from django.forms import ModelForm
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth.models import User
+from todo.models import Todo
 from django.utils.translation import ugettext_lazy as _
 
 class BootstrapAuthenticationForm(AuthenticationForm):
@@ -20,10 +22,29 @@ class BootstrapAuthenticationForm(AuthenticationForm):
 
 
 class SignUpForm(UserCreationForm):
-    first_name = forms.CharField(max_length=30, required=False, help_text='Optional.')
-    last_name = forms.CharField(max_length=30, required=False, help_text='Optional.')
-    email = forms.EmailField(max_length=254, help_text='Required. Inform a valid email address.')
+    first_name = forms.CharField(max_length=30, 
+                                 widget=forms.TextInput({
+                                   'class': 'form-control',
+                                   'placeholder': 'First Name'}),
+                                 required=False, 
+                                 help_text='Optional.')
+    last_name = forms.CharField(max_length=30,
+                                widget=forms.TextInput({
+                                   'class': 'form-control',
+                                   'placeholder': 'Last Name'}),
+                                required=False, 
+                                help_text='Optional.')
+    email = forms.EmailField(max_length=254, 
+                             widget=forms.TextInput({
+                                   'class': 'form-control',
+                                   'placeholder': 'E-mail'}),
+                             help_text='Required. Inform a valid email address.')
 
     class Meta:
         model = User
         fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2', )
+
+class TodoForm(ModelForm):
+    class Meta:
+        model = Todo
+        fields = '__all__'
