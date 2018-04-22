@@ -45,15 +45,6 @@
     <Compile Include="django_jobs_board\wsgi.py" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="C:\Users\kcourbet\source\repos\django_jobs_board\todo\" />
-    <Folder Include="C:\Users\kcourbet\source\repos\django_jobs_board\todo\migrations\" />
-    <Folder Include="C:\Users\kcourbet\source\repos\django_jobs_board\todo\static\" />
-    <Folder Include="C:\Users\kcourbet\source\repos\django_jobs_board\todo\static\app\" />
-    <Folder Include="C:\Users\kcourbet\source\repos\django_jobs_board\todo\static\app\content\" />
-    <Folder Include="C:\Users\kcourbet\source\repos\django_jobs_board\todo\static\app\fonts\" />
-    <Folder Include="C:\Users\kcourbet\source\repos\django_jobs_board\todo\static\app\scripts\" />
-    <Folder Include="C:\Users\kcourbet\source\repos\django_jobs_board\todo\templates\" />
-    <Folder Include="C:\Users\kcourbet\source\repos\django_jobs_board\todo\templates\todo\" />
     <Folder Include="django_jobs_board\" />
     <Folder Include="todo\" />
     <Folder Include="todo\migrations\" />
