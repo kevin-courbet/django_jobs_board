@@ -3,14 +3,11 @@ Definition of urls for to_do_app.
 """
 
 from datetime import datetime
-from django.conf.urls import url
 import django.contrib.auth.views
-
+from django.conf.urls import url
+from django.conf.urls import include
 import todo.forms
 import todo.views
-
-# Uncomment the next lines to enable the admin:
-from django.conf.urls import include
 from django.contrib import admin
 admin.autodiscover()
 

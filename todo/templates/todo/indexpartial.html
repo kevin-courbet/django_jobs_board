@@ -1,0 +1,12 @@
+<hr />
+<div>
+	<a href="/todo/add">Post a new job</a>
+</div>
+<h1>Jobs List</h1>
+<div>
+	<ol>
+	{% for todo in todos %}
+	<li><a href="/details/{{todo.id}}">{{todo.title}}</a>: {{todo.task_description}}</li>
+	{% endfor %}
+    </ol>
+</div>

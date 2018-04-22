@@ -10,6 +10,7 @@ from .models import Todo
 from operator import itemgetter
 from .forms import SignUpForm, TodoForm
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 
 
 def home(request):
@@ -66,20 +67,18 @@ def details(request, id):
                   })
 
 
+@login_required()
 def add(request):
     assert isinstance(request, HttpRequest)
     if(request.method == 'POST'):
         form = TodoForm(request.POST)
         if form.is_valid():
             form.save()
-            #owner_id, endorsement, task_description, motivation, time_estimate, additional_information, attachments, created_at = itemgetter('owner', 'endorsement', 'task_description', 'motivation', 'time_estimate', 'additional_information', 'attachments', 'created_at')(request.POST)
-            #owner = User.objects.create(id=owner_id)
-            #todo = Todo(owner=owner, endorsement=endorsement, task_description=task_description, motivation=motivation, time_estimate=time_estimate, additional_information=additional_information, attachments=attachments, created_at=created_at)
-            #todo.save()
             return redirect('/')
     else:
         form = TodoForm()
-        return render(request, 'todo/add.html', {
+    return render(request, 'todo/add.html', {
+        'user': request.user, 
         'form': form,
         'title': 'Add',
         'year': datetime.now().year,
@@ -87,18 +86,16 @@ def add(request):
 
 
 def signup(request):
+    assert isinstance(request, HttpRequest)
     if request.method == 'POST':
         form = SignUpForm(request.POST)
         if form.is_valid():
-            form.save()
-            username = form.cleaned_data.get('username')
-            raw_password = form.cleaned_data.get('password1')
-            user = authenticate(username=username, password=raw_password)
+            user = form.save()
             login(request, user)
             return redirect('home')
     else:
         form = SignUpForm()
-        return render(request, 'todo/signup.html', {
+    return render(request, 'todo/signup.html', {
             'form': form,
             'title': 'Signup',
             'year': datetime.now().year,

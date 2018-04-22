@@ -1,9 +1,20 @@
 {% extends 'todo/layout.html' %}
 {% block content %}
   <h2>Sign up</h2>
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Sign up</button>
-  </form>
+<div class="container">  
+    <form action="." method="post" class="form-horizontal">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Sign up" class="btn btn-default" />
+            </div>
+        </div>
+        {% for field in form %}
+            {% for error in field.errors %}
+              <p style="color: red">{{ error }}</p>
+            {% endfor %}
+        {% endfor %}
+    </form>
+</div>
 {% endblock %}

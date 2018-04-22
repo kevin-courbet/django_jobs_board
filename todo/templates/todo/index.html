@@ -6,15 +6,7 @@
     <h1>Jobs Board</h1>
     <p class="lead">Jobs Board is a website that allows you to post, share and manage tasks to be carried out on a voluntary basis (fueled by Achiever points).</p>
 </div>
-<h1>Jobs List</h1>
-<hr/>
-<div>
-    <a href="/todo/add">Post new job</a>
-</div>
-<div>
-{% for todo in todos %}
-    <li><a href="/details/{{todo.id}}">{{todo.title}}</a>: {{todo.task_description}}</li>
-{% endfor %}
-</div>
+
+{% include 'todo/indexpartial.html' %}
 
 {% endblock %}

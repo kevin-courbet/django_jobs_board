@@ -87,6 +87,7 @@
     <Content Include="todo\templates\todo\contact.html" />
     <Content Include="todo\templates\todo\details.html" />
     <Content Include="todo\templates\todo\index.html" />
+    <Content Include="todo\templates\todo\indexpartial.html" />
     <Content Include="todo\templates\todo\layout.html" />
     <Content Include="todo\templates\todo\login.html" />
     <Content Include="todo\templates\todo\loginpartial.html" />
