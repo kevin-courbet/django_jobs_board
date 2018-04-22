@@ -6,7 +6,6 @@ from datetime import datetime
 from django.db import models
 from django.contrib.auth.models import User
 
-
 class Todo(models.Model):
     title = models.CharField(max_length=200, unique=True)
     owner = models.ForeignKey(User, default=1, on_delete=models.CASCADE)
