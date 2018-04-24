@@ -18,43 +18,37 @@ def home(request):
     assert isinstance(request, HttpRequest)
     todos = Todo.objects.all()[:10]
 
-    return render(
-        request,
+    return render(request,
         'todo/index.html',
         {
             'title': 'Home Page',
             'year': datetime.now().year,
             'todos': todos,
-        }
-    )
+        })
 
 
 def contact(request):
     """Renders the contact page."""
     assert isinstance(request, HttpRequest)
-    return render(
-        request,
+    return render(request,
         'todo/contact.html',
         {
             'title': 'Contact',
             'message': 'Your contact page.',
             'year': datetime.now().year,
-        }
-    )
+        })
 
 
 def about(request):
     """Renders the about page."""
     assert isinstance(request, HttpRequest)
-    return render(
-        request,
+    return render(request,
         'todo/about.html',
         {
             'title': 'About',
             'message': 'This website allows is a Global Business Consulting Jobs Board : Post, share and manage tasks.',
             'year': datetime.now().year,
-        }
-    )
+        })
 
 
 def details(request, id):
@@ -73,12 +67,14 @@ def add(request):
     if(request.method == 'POST'):
         form = TodoForm(request.POST)
         if form.is_valid():
-            form.save()
+            data = form.save(commit=False)
+            data.owner = request.user
+            data.created_at = datetime.now()
+            data.save()
             return redirect('/')
     else:
         form = TodoForm()
     return render(request, 'todo/add.html', {
-        'user': request.user, 
         'form': form,
         'title': 'Add',
         'year': datetime.now().year,

@@ -4,13 +4,15 @@
 <a href="{% url 'home' %}"><<< Go Back</a>
 <br/>
 <h1>{{todo.title}}</h1>
-<p><b>Owner</b>: {{todo.owner}}</p>
-<p><b>Endorsement</b>: {{todo.endorsement}}</p>
-<p><b>Task Description</b>: {{todo.task_description}}</p>
-<p><b>Motivation</b>: {{todo.motivation}}</p>
-<p><b>Time Estimate</b>: {{todo.time_estimate}}</p>
-<p><b>Additional Information</b>: {{todo.additional_information}}</p>
-<p><b>Attachments</b>: {{todo.attachments}}</p>
-<p><b>Created At</b>: {{todo.created_at}}</p>
+<div class="">
+    <p><b>Owner</b>: {{todo.owner}}</p>
+    <p><b>Endorsement</b>: {{todo.endorsement}}</p>
+    <p><b>Task Description</b>: {{todo.task_description}}</p>
+    <p><b>Motivation</b>: {{todo.motivation}}</p>
+    <p><b>Time Estimate</b>: {{todo.time_estimate}}</p>
+    <p><b>Additional Information</b>: {{todo.additional_information}}</p>
+    <p><b>Attachments</b>: {{todo.attachments}}</p>
+    <p><b>Created At</b>: {{todo.created_at}}</p>
+</div>
 <br/>
 {% endblock content %}

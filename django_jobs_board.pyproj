@@ -92,7 +92,6 @@
     <Content Include="todo\templates\todo\login.html" />
     <Content Include="todo\templates\todo\loginpartial.html" />
     <Content Include="todo\templates\todo\signup.html" />
-    <Content Include="todo\templates\todo\WebPage1.html" />
   </ItemGroup>
   <ItemGroup>
     <None Include="readme.html">

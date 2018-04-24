@@ -22,6 +22,7 @@ urlpatterns = [
             {
                 'title': 'Log in',
                 'year': datetime.now().year,
+                'next': '/'
             }
         },
         name='login'),

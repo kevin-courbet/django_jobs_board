@@ -1,9 +1,90 @@
 {% extends "todo/layout.html" %}
 {% block content %}
 <br />
- <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Submit</button>
- </form>
+    <div class="col-md-8">
+        <section id="addForm">
+            <form method="post" class="form-horizontal">
+                {% csrf_token %}
+                <h4>Add a job to the board.</h4>
+                <hr />
+               <!-- <div class="form-group">
+                    <label for="{{ form.owner.id_for_label }}" class="col-md-2 control-label">Owner</label>
+                    <div class="col-md-10">
+                        {{ form.owner }}
+                    </div>
+                    <div class="col-md-offset-2">
+                        {{ form.owner.errors }}
+                    </div>
+                </div>-->
+                <div class="form-group">
+                    <label for="{{ form.title.id_for_label }}" class="col-md-2 control-label">Title</label>
+                    <div class="col-md-10">
+                        {{ form.title }}
+                    </div>
+                    <div class="col-md-offset-2">
+                        {{ form.title.errors }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="form.title.id_for_label" class="col-md-2 control-label">Endorsement</label>
+                    <div class="col-md-10">
+                        {{ form.endorsement }}
+                    </div>
+                    <div class="col-md-offset-2">
+                        {{ form.endorsement.errors }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="form.title.id_for_label" class="col-md-2 control-label">Task description</label>
+                    <div class="col-md-10">
+                        {{ form.task_description }}
+                    </div>
+                    <div class="col-md-offset-2">
+                        {{ form.task_description.errors }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="form.title.id_for_label" class="col-md-2 control-label">Motivation</label>
+                    <div class="col-md-10">
+                        {{ form.motivation }}
+                    </div>
+                    <div class="col-md-offset-2">
+                        {{ form.motivation.errors }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="form.title.id_for_label" class="col-md-2 control-label">Time estimate</label>
+                    <div class="col-md-10">
+                        {{ form.time_estimate }}
+                    </div>
+                    <div class="col-md-offset-2">
+                        {{ form.time_estimate.errors }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="form.title.id_for_label" class="col-md-2 control-label">Additional information</label>
+                    <div class="col-md-10">
+                        {{ form.additional_information }}
+                    </div>
+                    <div class="col-md-offset-2">
+                        {{ form.additional_information.errors }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="form.title.id_for_label" class="col-md-2 control-label">Attachments</label>
+                    <div class="col-md-10">
+                        {{ form.attachments }}
+                    </div>
+                    <div class="col-md-offset-2">
+                    {{ form.attachments.errors }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Post job" class="btn btn-default" />
+                    </div>
+                </div>
+            </form>
+        </section>
+    </div>
 {% endblock content %}

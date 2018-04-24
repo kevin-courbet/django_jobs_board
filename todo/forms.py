@@ -32,7 +32,7 @@ class SignUpForm(UserCreationForm):
 
 
 class TodoForm(ModelForm):
-    
+
     class Meta:
         model = Todo
-        fields = '__all__'
+        fields = ('title', 'endorsement', 'task_description', 'motivation', 'time_estimate', 'additional_information', 'attachments')
