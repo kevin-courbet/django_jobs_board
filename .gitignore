@@ -260,5 +260,12 @@ paket-files/
 __pycache__/
 *.pyc
 
-# Python Environment (Deps are taken care of by requirements.txt)
+# Python Environment
 *env/
+
+# SQLite 3 db
+*.sqlite3
+
+# Migrations
+*/migrations/*
+*/migrations/
