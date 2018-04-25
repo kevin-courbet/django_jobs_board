@@ -36,3 +36,10 @@ class TodoForm(ModelForm):
     class Meta:
         model = Todo
         fields = ('title', 'endorsement', 'task_description', 'motivation', 'time_estimate', 'additional_information', 'attachments')
+
+
+class EditTodoForm(ModelForm):
+
+    class Meta:
+        model = Todo
+        fields = ('title', 'owner', 'endorsement', 'task_description', 'motivation', 'time_estimate', 'additional_information', 'attachments')

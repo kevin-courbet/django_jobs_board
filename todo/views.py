@@ -8,7 +8,7 @@ from django.http import HttpRequest
 from datetime import datetime
 from .models import Todo
 from operator import itemgetter
-from .forms import SignUpForm, TodoForm
+from .forms import SignUpForm, TodoForm, EditTodoForm
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 
@@ -54,11 +54,22 @@ def about(request):
 def details(request, id):
     assert isinstance(request, HttpRequest)
     todo = Todo.objects.get(id=id)
+    if(request.method == 'POST'):
+        form = EditTodoForm(request.POST, instance=todo)
+        if form.is_valid():
+            data = form.save(commit=False)
+            data.task_doer.add(request.user)
+            data.save()
+            return redirect('/')
+    else:
+        form = EditTodoForm(instance=todo)
+        for field in form:
+            field.disabled = True
     return render(request, 'todo/details.html',
-                  {
-                      'todo': todo,
-                      'year': datetime.now().year,
-                  })
+        {
+            'form': form,
+            'year': datetime.now().year,
+        })
 
 
 @login_required()

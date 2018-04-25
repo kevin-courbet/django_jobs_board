@@ -23,6 +23,7 @@ class Todo(models.Model):
     additional_information = models.TextField(verbose_name="Additional information", max_length=1000, help_text="Please provide additional information that can help understanding the task's breadth and stakes", blank=True)
     attachments = models.FileField(verbose_name="Attachments", upload_to='user_directory_path', blank=True)
     created_at = models.DateTimeField(verbose_name="Created at", default=0, blank=False)
+    task_doer = models.ManyToManyField(User, related_name="%(app_label)s_%(class)s_related")
 
     def __str__(self):
         return self.title
