@@ -7,6 +7,12 @@ from datetime import timedelta
 from django.db import models
 from django.contrib.auth.models import User
 
+
+def user_directory_path(instance, filename):
+    # file will be uploaded to MEDIA_ROOT/user_<id>/<filename>
+    return 'user_{0}/{1}'.format(instance.user.id, filename)
+
+
 class Todo(models.Model):
     title = models.CharField(verbose_name="Title", max_length=200, unique=True)
     owner = models.ForeignKey(User, blank=False, on_delete=models.CASCADE, verbose_name="Owner")
@@ -15,7 +21,7 @@ class Todo(models.Model):
     motivation = models.CharField(verbose_name="Motivation", max_length=250, help_text="Please provide the motivation behind the task.", default="", blank=False)
     time_estimate = models.DurationField(verbose_name="Time estimate", help_text="Please specify how long the task is estimated to take.", default=timedelta(0), blank=False)
     additional_information = models.TextField(verbose_name="Additional information", max_length=1000, help_text="Please provide additional information that can help understanding the task's breadth and stakes", blank=True)
-    attachments = models.FileField(verbose_name="Attachments", upload_to='uploads/', blank=True)
+    attachments = models.FileField(verbose_name="Attachments", upload_to='user_directory_path', blank=True)
     created_at = models.DateTimeField(verbose_name="Created at", default=0, blank=False)
 
     def __str__(self):

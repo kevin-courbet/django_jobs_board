@@ -59,7 +59,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="requirements.txt" />
-    <Content Include="db.sqlite3" />
     <Content Include="todo\static\app\content\bootstrap.css" />
     <Content Include="todo\static\app\content\bootstrap.min.css" />
     <Content Include="todo\static\app\content\site.css" />

@@ -34,7 +34,7 @@ def contact(request):
         'todo/contact.html',
         {
             'title': 'Contact',
-            'message': 'Your contact page.',
+            'message': 'For technical issues:',
             'year': datetime.now().year,
         })
 
@@ -46,7 +46,7 @@ def about(request):
         'todo/about.html',
         {
             'title': 'About',
-            'message': 'This website allows is a Global Business Consulting Jobs Board : Post, share and manage tasks.',
+            'message': 'Post, share and manage tasks on the Global Business Consulting Jobs Board.',
             'year': datetime.now().year,
         })
 
